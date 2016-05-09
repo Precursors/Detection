@@ -2,7 +2,11 @@
 
 ;
 ((factory, global) => {
-  global.Detection = global.Detection || factory(global);
+  if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
+    module.exports = factory(global);
+  } else {
+    global.Detection = global.Detection || factory(global);
+  }
 })(global => {
   // 一些普通typeof无法直接检测的类型 注意 object一定要在最后 否则 searchType方法可能会失效
   const types = ['array', 'boolean', 'date', 'function', 'regExp', 'number', 'string', 'object'];
@@ -69,4 +73,4 @@
   Detection.getType = getType;
 
   return Detection;
-}, window || global || this);
+}, typeof global !== 'undefined' ? global : typeof window !== 'undefined' ? window : this);
