@@ -12,7 +12,7 @@
 
   /**
    * [eachTypes description]
-   * @param  {Function} callback 每循环一个type 就将type作为参数传入该方法
+   * @param  {function} callback 每循环一个type 就将type作为参数传入该方法
    * @return {[任意类型]}          callback的返回值
    */
   function eachTypes(callback) {
