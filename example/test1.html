@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>example 1</title>
+  <style media="screen">
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    td {
+      padding: 4px;
+    }
+  </style>
+</head>
+
+<body>
+  <table id="output"></table>
+  <script type="text/javascript" src="../dist/detection.js"></script>
+  <script type="text/javascript">
+    'use strict';
+    var $output = document.getElementById('output');
+
+    function buildTable(datas) {
+      var index = 0;
+      var len = datas.length;
+      var str = '';
+      for (; index < len; index++) {
+        var data = datas[index];
+        str += '<tr>';
+        str += '<td>' + data.value + '</td>';
+        str += '<td>' + data.title + '</td>';
+        str += '<td>' + Detection[data.method](data.realValue) + '</td>';
+        str += '<td> type: </td>';
+        str += '<td> ' + Detection.getType(data.realValue) + '</td>';
+        str += '</tr>';
+      }
+
+      return str;
+    }
+
+    var config = [{
+      value: '1',
+      realValue: 1,
+      title: 'is number: ',
+      method: 'isNumber'
+    }, {
+      value: '[]',
+      realValue: [],
+      title: 'is array: ',
+      method: 'isArray'
+    }, {
+      value: 'str',
+      realValue: 'str',
+      title: 'is string: ',
+      method: 'isString'
+    }, {
+      value: '{}',
+      realValue: {},
+      title: 'is string: ',
+      method: 'isString'
+    }, {
+      value: 'true',
+      realValue: true,
+      title: 'is boolean: ',
+      method: 'isBoolean'
+    }, {
+      value: '/\w+/',
+      realValue: /\w+/,
+      title: 'is regExp: ',
+      method: 'isRegExp'
+    }];
+
+    $output.innerHTML = buildTable(config);
+
+    
+  </script>
+</body>
+
+</html>
