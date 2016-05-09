@@ -61,7 +61,7 @@
    * @return {[string]}     如果该参数类型使用typeof判断不为object时 则调用searchType来进行查找 参数的类型
    */
   function getType(arg) {
-    return (typeof arg === 'object') ? searchType(arg) : typeof arg;
+    return (typeof arg === 'object') ? arg.constructor === global.Object ? 'object' : searchType(arg) : typeof arg;
   }
 
   // 循环生成多个类型的判断
