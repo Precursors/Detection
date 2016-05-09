@@ -69,4 +69,4 @@
   Detection.getType = getType;
 
   return Detection;
-}, window);
+}, window || global || this);

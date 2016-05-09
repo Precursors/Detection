@@ -94,4 +94,4 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
   Detection.getType = getType;
 
   return Detection;
-}, window);
+}, window || global || undefined);
